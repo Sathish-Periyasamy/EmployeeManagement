@@ -4,18 +4,18 @@
   <xs:complexType>
     <xs:sequence>
       <xs:element name="id" type="xs:string"/>
- <xs:element name="name" type="xs:string"/>
- <xs:element name="joiningDate" type="xs:date"/>
- <xs:element name="department" type="departmentType"/>
- </xs:sequence>
-    </xs:complexType>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="joiningDate" type="xs:date"/>
+      <xs:element name="department" type="departmentType"/>
+    </xs:sequence>
+  </xs:complexType>
 </xs:element>
 <xs:simpleType name="departmentType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="hr"/>
       <xs:enumeration value="fin"/>
       <xs:enumeration value="it"/>
- <xs:enumeration value="operations"/>
+      <xs:enumeration value="operations"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
