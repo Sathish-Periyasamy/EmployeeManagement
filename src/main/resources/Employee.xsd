@@ -15,7 +15,7 @@
       <xs:enumeration value="hr"/>
       <xs:enumeration value="fin"/>
       <xs:enumeration value="it"/>
- <xs:enumeration value="ops"/>
+ <xs:enumeration value="operations"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
