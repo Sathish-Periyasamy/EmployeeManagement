@@ -29,9 +29,11 @@ public class EmployeeService {
 		LOGGER.info("createOrUpdateEmployee method >>IN");
 		Long currentTime = System.currentTimeMillis();
 		long createdTime =0L;
+		String response =null;
 		List<Employee> empList=checkForAddUpdate(empEntity.getId());
 		if(empList.isEmpty()){
-		  employeeDao.saveEmployee(empEntity);
+		 	employeeDao.saveEmployee(empEntity);
+		 	response =EmployeeConstants.SAVED_SUCCESS;
 		}
 		else{
 			Employee employee = (Employee)empList.get(0);// Only one element will be present here.
@@ -39,14 +41,16 @@ public class EmployeeService {
 			createdTime=employee.getLastModifiedOn().getTime();
 			if(validateTimeDifference(createdTime)){
 				employeeDao.updateEmployee(empEntity);
+				response =EmployeeConstants.UPDATED_SUCCESS;
 			}else{
 			// Add restricted XML to error table
-			LOGGER.info("XML is Resticted");
-			invalidXmlProcessing(xmlPayload,EmployeeConstants.RESTRICTED_XML);
+				LOGGER.info("XML is Resticted");
+				invalidXmlProcessing(xmlPayload,EmployeeConstants.RESTRICTED_XML);
+				response =EmployeeConstants.RESTRICTED_RESPONSE;
 			}
 		}
 		LOGGER.info("Time taken in createOrUpdateEmployee method is "+(System.currentTimeMillis()-currentTime)+" ms");
-		return "Success";
+		return response;
 	}
 	
 	/**
