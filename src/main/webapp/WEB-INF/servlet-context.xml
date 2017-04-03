@@ -19,7 +19,6 @@ class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
 <beans:property name="classesToBeBound">
     <beans:list>
         <beans:value>com.cts.osp.ems.model.Employee</beans:value>
-        <!-- <value>dw.spring3.rest.bean.EmployeeList</value> -->
     </beans:list>
 </beans:property>
 </beans:bean>
