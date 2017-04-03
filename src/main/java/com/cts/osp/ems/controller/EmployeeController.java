@@ -48,9 +48,9 @@ public class EmployeeController {
 	 * @param xmlPayload
 	 * @return response
 	 */
-	@RequestMapping(value=EmployeeConstants.GET_ALL_EMP,method = RequestMethod.POST,
+	@RequestMapping(value=EmployeeConstants.SAVE_EMP,method = RequestMethod.POST,
 			consumes="application/xml")
-    public Response saveEmployee(@RequestBody String xmlPayload){
+    	public Response saveEmployee(@RequestBody String xmlPayload){
 		Long currentTime = System.currentTimeMillis();
 		LOGGER.info("XML Payload is : "+xmlPayload);
 		//Validate the XML
@@ -74,22 +74,21 @@ public class EmployeeController {
 	 */
 	public boolean validateXML(String xmlPayload){
 		Long currentTime = System.currentTimeMillis();
-		try {			
+	try {			
 	        URL xsdResource = EmployeeController.class.getClassLoader().getResource(EmployeeConstants.XSD_PATH);
-            SchemaFactory factory = 
-                    SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = factory.newSchema(xsdResource);
-            Validator validator = schema.newValidator();
-            validator.validate(new StreamSource(new StringReader(xmlPayload)));
+            	SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            	Schema schema = factory.newSchema(xsdResource);
+            	Validator validator = schema.newValidator();
+            	validator.validate(new StreamSource(new StringReader(xmlPayload)));
         } catch (IOException e) {
-            LOGGER.error("Exception: "+e.getMessage());
-            return false;
+            	LOGGER.error("Exception: "+e.getMessage());
+            	return false;
         }
-		catch(SAXException e){
-			LOGGER.error("Exception: "+e.getMessage());
-            return false;
-		}
-		LOGGER.info("Time taken in ValidateXml Method is "+(System.currentTimeMillis()-currentTime)+" ms");
+	catch(SAXException e){
+		LOGGER.error("Exception: "+e.getMessage());
+        	return false;
+	}
+	LOGGER.info("Time taken in ValidateXml Method is "+(System.currentTimeMillis()-currentTime)+" ms");
         return true;
     
 	}
