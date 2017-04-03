@@ -18,7 +18,7 @@ import com.cts.osp.ems.model.Employee;
 import com.cts.osp.ems.service.EmployeeService;
 
 
-@ContextConfiguration(locations={"/servlet-context.xml"})
+@ContextConfiguration(locations={"classpath:/WEB-INF/servlet-context.xml"})
 public class EmployeeTest {
 	
 	@Autowired
